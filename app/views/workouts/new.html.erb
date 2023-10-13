@@ -1,0 +1,10 @@
+<%= form_with model: @workout do |form| %>
+  <%= form.label :date %><br>
+  <%= form.date_field :date %><br>
+
+  <%= form.label :workout_name, 'Workout name (optional):' %><br>
+  <%= form.text_field :workout_name %><br>
+
+  <%= form.label :total, 'Total Weight Moved:' %><br>
+  <%= form.text_field :total %>
+<% end %>
