@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_13_022413) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_14_044056) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "groups", force: :cascade do |t|
+    t.integer "reps"
+    t.integer "weight"
+    t.bigint "lift_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lift_id"], name: "index_groups_on_lift_id"
+  end
 
   create_table "lifts", force: :cascade do |t|
     t.string "lift_name"
@@ -30,5 +39,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_13_022413) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "groups", "lifts"
   add_foreign_key "lifts", "workouts"
 end
