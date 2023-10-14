@@ -8,14 +8,9 @@
 
   <div data-controller="nested-form">
     <template data-nested-form-target="Template">
-      <%= form.fields_for :lifts, Lift.new, child_index: 'TEMPLATE_RECORD' do |form| %>
-        <div class="nested-fields">
-          <%= form.hidden_field :_destroy %>
-          <%= form.label :lift_name, 'Lift name:' %><br>
-          <%= form.text_field :lift_name %><br>
-          <%= link_to "Remove", "#", data: { action: "nested-form#removeField"} %><br>
-        </div>
-        <% end %>
+      <%= form.fields_for :lifts, Lift.new, child_index: 'TEMPLATE_RECORD' do |lift| %>
+        <%= render 'lift_fields', form: lift %>
+      <% end %>
     </template>
     <div data-nested-form-target="addLift">
       <button data-action="nested-form#addField">Add lift</button>

@@ -1,0 +1,6 @@
+<div class="nested-fields">
+  <%= form.hidden_field :_destroy %>
+  <%= form.label :lift_name, 'Lift name:' %><br>
+  <%= form.text_field :lift_name %><br>
+  <%= link_to "Remove", "#", data: { action: "nested-form#removeField"} %><br>
+</div>
