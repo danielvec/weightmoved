@@ -1,12 +1,12 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["addLift", "Template"];
+  static targets = ["addField", "Template"];
 
   addField(event) {
     event.preventDefault();
     const content = this.TemplateTarget.innerHTML.replace(/TEMPLATE_RECORD/g, Math.floor(Math.random() * 20));
-    this.addLiftTarget.insertAdjacentHTML('beforebegin', content);
+    this.addFieldTarget.insertAdjacentHTML('beforebegin', content);
   }
 
   removeField(event) {
