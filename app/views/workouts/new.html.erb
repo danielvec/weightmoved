@@ -5,18 +5,20 @@
   <%= form.label :workout_name, 'Workout name (optional):' %><br>
   <%= form.text_field :workout_name %><br>
 
-
-  <div data-controller="nested-form">
-    <template data-nested-form-target="Template">
-      <%= form.fields_for :lifts, Lift.new, child_index: 'TEMPLATE_RECORD' do |lift| %>
-        <%= render 'lift_fields', form: lift %>
-      <% end %>
-    </template>
-    <div data-nested-form-target="addField">
-      <button data-action="nested-form#addField">Add lift</button>
+  <div data-controller="calculator">
+    <div data-controller="nested-form">
+      <template data-nested-form-target="Template">
+        <%= form.fields_for :lifts, Lift.new, child_index: 'TEMPLATE_RECORD' do |lift| %>
+          <%= render 'lift_fields', form: lift %>
+        <% end %>
+      </template>
+      <div data-nested-form-target="addField">
+        <button data-action="nested-form#addField">Add lift</button>
+      </div>
     </div>
-  </div>
 
-  <%= form.label :total, 'Total Weight Moved:' %><br>
-  <%= form.text_field :total %>
+    <%= form.label :total, 'Total Weight Moved:' %><br>
+    <%= form.text_field :total, data: {
+        calculator_target: "totalWeight" } %>
+  </div>
 <% end %>
