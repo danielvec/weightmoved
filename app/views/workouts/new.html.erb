@@ -5,7 +5,7 @@
   <%= form.label :workout_name, 'Workout name (optional):' %><br>
   <%= form.text_field :workout_name %><br>
 
-  <div data-controller="calculator">
+  <div data-controller="calculator" data-action="click->calculator#calculateTotalWeight">
     <div data-controller="nested-form">
       <template data-nested-form-target="Template">
         <%= form.fields_for :lifts, Lift.new, child_index: 'TEMPLATE_RECORD' do |lift| %>
