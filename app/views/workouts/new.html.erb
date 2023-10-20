@@ -26,4 +26,7 @@
     <%= form.text_field :total, data: {
         calculator_target: "totalWeight" } %>
   </div>
+  <% if user_signed_in? %>
+    <%= form.submit "Save Workout", :class => "button" %><br>
+  <% end %>
 <% end %>
