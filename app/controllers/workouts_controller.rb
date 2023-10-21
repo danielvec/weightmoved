@@ -1,4 +1,6 @@
 class WorkoutsController < ApplicationController
+  before_action :authenticate_user!, only: [:index]
+
   def index
     @workouts = current_user.workouts
   end
