@@ -12,13 +12,13 @@
 
   <div data-controller="calculator" data-action="click->calculator#calculateTotalWeight">
     <div data-controller="nested-form">
-      <template data-nested-form-target="Template">
-        <%= form.fields_for :lifts, Lift.new, child_index: 'TEMPLATE_RECORD' do |lift| %>
+      <template data-nested-form-target="liftTemplate">
+        <%= form.fields_for :lifts, Lift.new, child_index: 'TEMPLATE_LIFT' do |lift| %>
           <%= render 'lift_fields', form: lift %>
         <% end %>
       </template>
-      <div data-nested-form-target="addField">
-        <button data-action="nested-form#addField">Add lift</button>
+      <div data-nested-form-target="addLift">
+        <button data-action="nested-form#addLift">Add lift</button>
       </div>
     </div>
 

@@ -3,13 +3,13 @@
   <%= form.label :lift_name, 'Lift name:' %><br>
   <%= form.text_field :lift_name %><br>
   <div data-controller="nested-form">
-    <template data-nested-form-target="Template">
-      <%= form.fields_for :groups, Group.new, child_index: 'TEMPLATE_RECORD' do |group| %>
+    <template data-nested-form-target="groupTemplate">
+      <%= form.fields_for :groups, Group.new, child_index: 'TEMPLATE_GROUP' do |group| %>
         <%= render 'group_fields', form: group %>
       <% end %>
     </template>
-    <div data-nested-form-target="addField">
-      <button data-action="click->nested-form#addField">Add Set</button>
+    <div data-nested-form-target="addGroup">
+      <button data-action="click->nested-form#addGroup">Add Set</button>
     </div>
   </div>
   <%= link_to "Remove", "#", data: { action: "nested-form#removeField"} %><br>
