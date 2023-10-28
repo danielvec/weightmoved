@@ -1,17 +1,33 @@
 <h2>Workout Log</h2>
 <table>
-    <thead>
-        <tr>
-            <th>Date</th>
-            <th>Total</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @workouts.each do |workout| %>
-            <tr>
-            <td><%= workout.date %></td>
-            <td><%= workout.total %></td>
-            </tr>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Workout Name</th>
+      <th>Total</th>
+      <th>Lift Name</th>
+      <th>Reps</th>
+      <th>Sets</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @workouts.each do |workout| %>
+      <tr>
+          <td rowspan="<%= workout.lifts.map { |lift| lift.groups.count }.sum + 1 %>"><%= workout.date %></td>
+          <td rowspan="<%= workout.lifts.map { |lift| lift.groups.count }.sum + 1 %>"><%= workout.workout_name %></td>
+          <td rowspan="<%= workout.lifts.map { |lift| lift.groups.count }.sum + 1 %>"><%= workout.total %></td>
+      </tr>
+      <% workout.lifts.each do |lift| %>
+        <% lift.groups.each_with_index do |group, index| %>
+          <tr>
+            <% if index == 0 %>
+              <td rowspan="<%= lift.groups.count %>"><%= lift.lift_name %></td>
+            <% end %>
+            <td><%= group.reps %></td>
+            <td><%= group.weight %></td>
+          </tr>
         <% end %>
-    </tbody>
+      <% end %>
+    <% end %>
+  </tbody>
 </table>
