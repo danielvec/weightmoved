@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 
+gem 'racc', '1.6.0'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.8"
 
@@ -82,3 +84,5 @@ gem "sentry-ruby", "~> 5.12"
 gem "sentry-rails", "~> 5.12"
 
 gem "devise", "~> 4.9"
+
+gem 'psych', '~>4.0.3'
