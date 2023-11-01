@@ -5,7 +5,7 @@
 <% end %>
 <%= form_with model: @workout do |form| %>
   <%= form.label :date %><br>
-  <%= form.date_field :date %><br>
+  <%= form.date_field :date, required: true %><br>
 
   <%= form.label :workout_name, 'Workout name (optional):' %><br>
   <%= form.text_field :workout_name %><br>

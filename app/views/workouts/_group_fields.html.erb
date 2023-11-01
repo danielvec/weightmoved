@@ -2,12 +2,12 @@
   <%= form.hidden_field :_destroy %>
 
   <%= form.label :weight, 'Weight:' %>
-  <%= form.text_field :weight, data: {
+  <%= form.text_field :weight, required: true, data: {
       calculator_target: "weight",
       action: "input->calculator#calculateTotalWeight"} %>
 
   <%= form.label :reps, '# of reps:' %>
-  <%= form.text_field :reps, data: {
+  <%= form.text_field :reps, required: true, data: {
       calculator_target: "reps",
       action: "input->calculator#calculateTotalWeight"} %>
 

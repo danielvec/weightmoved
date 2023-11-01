@@ -1,7 +1,7 @@
 <div class="nested-fields">
   <%= form.hidden_field :_destroy %>
   <%= form.label :lift_name, 'Lift name:' %><br>
-  <%= form.text_field :lift_name %><br>
+  <%= form.text_field :lift_name, required: true %><br>
   <div data-controller="nested-form">
     <template data-nested-form-target="groupTemplate">
       <%= form.fields_for :groups, Group.new, child_index: 'TEMPLATE_GROUP' do |group| %>
