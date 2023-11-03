@@ -5,6 +5,8 @@ ruby "3.1.2"
 
 gem 'racc', '1.6.0'
 
+gem 'tailwindcss-rails'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.8"
 

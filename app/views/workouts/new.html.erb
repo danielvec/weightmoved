@@ -3,30 +3,32 @@
 <% else %>
   <%= link_to "Sign In to Track Your Progress", new_user_session_path %>
 <% end %>
-<%= form_with model: @workout do |form| %>
-  <%= form.label :date %><br>
-  <%= form.date_field :date, required: true %><br>
+<div class="m-8 border">
+  <%= form_with model: @workout do |form| %>
+    <%= form.label :date %><br>
+    <%= form.date_field :date, required: true %><br>
 
-  <%= form.label :workout_name, 'Workout name (optional):' %><br>
-  <%= form.text_field :workout_name %><br>
+    <%= form.label :workout_name, 'Workout name (optional):' %><br>
+    <%= form.text_field :workout_name %><br>
 
-  <div data-controller="calculator" data-action="click->calculator#calculateTotalWeight">
-    <div data-controller="nested-form">
-      <template data-nested-form-target="liftTemplate">
-        <%= form.fields_for :lifts, Lift.new, child_index: 'TEMPLATE_LIFT' do |lift| %>
-          <%= render 'lift_fields', form: lift %>
-        <% end %>
-      </template>
-      <div data-nested-form-target="addLift">
-        <button data-action="nested-form#addLift">Add lift</button>
+    <div data-controller="calculator" data-action="click->calculator#calculateTotalWeight">
+      <div data-controller="nested-form">
+        <template data-nested-form-target="liftTemplate">
+          <%= form.fields_for :lifts, Lift.new, child_index: 'TEMPLATE_LIFT' do |lift| %>
+            <%= render 'lift_fields', form: lift %>
+          <% end %>
+        </template>
+        <div data-nested-form-target="addLift">
+          <button data-action="nested-form#addLift">Add lift</button>
+        </div>
       </div>
-    </div>
 
-    <%= form.label :total, 'Total Weight Moved:' %><br>
-    <%= form.text_field :total, data: {
-        calculator_target: "totalWeight" } %>
-  </div>
-  <% if user_signed_in? %>
-    <%= form.submit "Save Workout", :class => "button" %><br>
+      <%= form.label :total, 'Total Weight Moved:' %><br>
+      <%= form.text_field :total, data: {
+          calculator_target: "totalWeight" } %>
+    </div>
+    <% if user_signed_in? %>
+      <%= form.submit "Save Workout", :class => "button" %><br>
+    <% end %>
   <% end %>
-<% end %>
+</div>
