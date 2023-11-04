@@ -4,13 +4,18 @@
   <%= link_to "Sign In to Track Your Progress", new_user_session_path %>
 <% end %>
 <div class="flex justify-center">
-  <div class="m-12 border rounded-lg shadow-md w-1/2 p-7">
+  <div class="m-12 border rounded-lg shadow-md w-3/5 p-7">
     <%= form_with model: @workout do |form| %>
-      <%= form.label :date %><br>
-      <%= form.date_field :date, required: true %><br>
-
-      <%= form.label :workout_name, 'Workout name (optional):' %><br>
-      <%= form.text_field :workout_name %><br>
+      <div class="flex">
+        <div class="w-2/5">
+          <%= form.label :date %><br>
+          <%= form.date_field :date, required: true %>
+        </div>
+        <div class="w-3/5"
+          <%= form.label :workout_name, 'Workout name (optional):' %><br>
+          <%= form.text_field :workout_name %><br>
+        </div>
+      </div>
 
       <div data-controller="calculator" data-action="click->calculator#calculateTotalWeight">
         <div data-controller="nested-form">
