@@ -9,7 +9,7 @@
   <%= form.label :reps, '# of reps:' %>
   <%= form.number_field :reps, required: true, type: "number", data: {
       calculator_target: "reps",
-      action: "input->calculator#calculateTotalWeight"}, class: "w-1/4" %>
+      action: "input->calculator#calculateTotalWeight"}, class: "w-1/4 m-1" %>
 
   <%= link_to "Remove", "#", data: { action: "nested-form#removeField" } %>
 </div>
