@@ -4,12 +4,12 @@
   <%= form.label :weight, 'Weight:' %>
   <%= form.number_field :weight, required: true, type: "number", data: {
       calculator_target: "weight",
-      action: "input->calculator#calculateTotalWeight"}, class: "w-1/4" %>
+      action: "input->calculator#calculateTotalWeight"}, class: "w-1/4 bg-slate-50 hover:bg-slate-100" %>
 
   <%= form.label :reps, '# of reps:' %>
   <%= form.number_field :reps, required: true, type: "number", data: {
       calculator_target: "reps",
-      action: "input->calculator#calculateTotalWeight"}, class: "w-1/4 m-1" %>
+      action: "input->calculator#calculateTotalWeight"}, class: "w-1/4 m-1 bg-slate-50 hover:bg-slate-100" %>
 
-  <%= link_to "Remove", "#", data: { action: "nested-form#removeField" } %>
+  <%= link_to "Remove", "#", data: { action: "nested-form#removeField" }, class: "text-red-500" %>
 </div>

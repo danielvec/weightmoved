@@ -9,8 +9,8 @@
       <% end %>
     </template>
     <div data-nested-form-target="addGroup">
-      <button data-action="click->nested-form#addGroup">Add Set</button>
+      <button class="text-green-700" data-action="click->nested-form#addGroup">Add Set</button>
     </div>
   </div>
-  <%= link_to "Remove", "#", data: { action: "nested-form#removeField"} %><br>
+  <%= link_to "Remove Lift", "#", data: { action: "nested-form#removeField"}, class: "text-red-500" %><br>
 </div>
