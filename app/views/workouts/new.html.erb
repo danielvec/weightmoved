@@ -6,14 +6,14 @@
 <div class="flex justify-center">
   <div class="m-12 border rounded-lg shadow-md w-3/5 p-7">
     <%= form_with model: @workout do |form| %>
-      <div class="flex">
-        <div class="w-2/5">
+      <div class="flex rounded">
+        <div class="w-2/5 rounded">
           <%= form.label :date %><br>
-          <%= form.date_field :date, required: true %>
+          <%= form.date_field :date, required: true, class: "rounded-md" %>
         </div>
         <div class="w-3/5"
           <%= form.label :workout_name, 'Workout name (optional):' %><br>
-          <%= form.text_field :workout_name %><br>
+          <%= form.text_field :workout_name, class: "rounded-md" %><br>
         </div>
       </div>
 
@@ -31,7 +31,7 @@
 
         <%= form.label :total, 'Total Weight Moved:' %><br>
         <%= form.text_field :total, data: {
-            calculator_target: "totalWeight" } %>
+            calculator_target: "totalWeight" }, class: "rounded-md" %>
       </div>
       <% if user_signed_in? %>
         <%= form.submit "Save Workout", :class => "button" %><br>
