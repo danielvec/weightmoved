@@ -4,4 +4,5 @@ class Lift < ApplicationRecord
   accepts_nested_attributes_for :groups, allow_destroy: true
 
   validates :lift_name, presence: true
+  validates  :groups, :length => { :minimum => 1 }
 end

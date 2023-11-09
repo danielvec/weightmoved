@@ -32,5 +32,10 @@
         <%= form.submit "Save Workout", :class => "button" %><br>
       <% end %>
     <% end %>
+    <% if flash[:error].present? %>
+  <div class="alert alert-danger">
+    <%= flash[:error] %>
+  </div>
+<% end %>
   </div>
 </div>
