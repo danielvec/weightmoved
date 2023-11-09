@@ -1,30 +1,31 @@
 <h2>Workout Log</h2>
-<table>
+<table class="items-center">
   <thead>
     <tr>
-      <th>Date</th>
-      <th>Workout Name</th>
-      <th>Total</th>
-      <th>Lift Name</th>
-      <th>Reps</th>
-      <th>Sets</th>
+      <th class="p-2">Date</th>
+      <th class="p-2">Workout Name</th>
+      <th class="p-2">Total</th>
+      <th class="p-2">Lift Name</th>
+      <th class="p-2">Reps</th>
+      <th class="p-2">Sets</th>
     </tr>
   </thead>
   <tbody>
     <% @workouts.each do |workout| %>
-      <tr>
-          <td rowspan="<%= workout.lifts.map { |lift| lift.groups.count }.sum + 1 %>"><%= workout.date %></td>
-          <td rowspan="<%= workout.lifts.map { |lift| lift.groups.count }.sum + 1 %>"><%= workout.workout_name %></td>
-          <td rowspan="<%= workout.lifts.map { |lift| lift.groups.count }.sum + 1 %>"><%= workout.total %></td>
+      <% row_color = cycle('bg-gray-100', 'bg-white') %>
+      <tr class="<%= row_color %>">
+          <td class="p-2" rowspan="<%= workout.lifts.map { |lift| lift.groups.count }.sum + 1 %>"><%= workout.date %></td>
+          <td class="p-2" rowspan="<%= workout.lifts.map { |lift| lift.groups.count }.sum + 1 %>"><%= workout.workout_name %></td>
+          <td class="p-2" rowspan="<%= workout.lifts.map { |lift| lift.groups.count }.sum + 1 %>"><%= workout.total %></td>
       </tr>
       <% workout.lifts.each do |lift| %>
         <% lift.groups.each_with_index do |group, index| %>
-          <tr>
+          <tr class="<%= row_color %>">
             <% if index == 0 %>
-              <td rowspan="<%= lift.groups.count %>"><%= lift.lift_name %></td>
+              <td class="p-2" rowspan="<%= lift.groups.count %>"><%= lift.lift_name %></td>
             <% end %>
-            <td><%= group.reps %></td>
-            <td><%= group.weight %></td>
+            <td class="p-2"><%= group.reps %></td>
+            <td class="p-2"><%= group.weight %></td>
           </tr>
         <% end %>
       <% end %>
