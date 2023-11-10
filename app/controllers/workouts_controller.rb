@@ -5,6 +5,10 @@ class WorkoutsController < ApplicationController
     @workouts = current_user.workouts.order(date: :desc)
   end
 
+  def show
+    @workout = Workout.find(params[:id])
+  end
+
   def new
     @workout = Workout.new
   end
@@ -17,6 +21,13 @@ class WorkoutsController < ApplicationController
       flash.now[:error] = @workout.errors.full_messages.to_sentence
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @workout = Workout.find(params[:id])
+    @workout.destroy
+
+    redirect_to workouts_path, status: :see_other
   end
 
   private

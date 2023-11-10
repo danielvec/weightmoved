@@ -1,0 +1,33 @@
+<h1 class="text-center text-2xl p-2"><%= @workout.date %> <%= @workout.workout_name unless @workout.workout_name.empty? %></h1>
+<div class="flex justify-center">
+  <table class="text-center">
+    <thead>
+      <tr>
+        <th class="p-2 text-center">Total</th>
+        <th class="p-2 text-center">Lift Name</th>
+        <th class="p-2 text-center">Reps</th>
+        <th class="p-2 text-center">Weight</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% row_color = cycle('bg-gray-100', 'bg-white') %>
+        <tr class="<%= row_color %>">
+            <td class="p-2 text-center" rowspan="<%= @workout.lifts.map { |lift| lift.groups.count }.sum + 1 %>"><%= @workout.total %></td>
+        </tr>
+        <% @workout.lifts.each do |lift| %>
+          <% lift.groups.each_with_index do |group, index| %>
+            <tr class="<%= row_color %>">
+              <% if index == 0 %>
+                <td class="p-2 text-center" rowspan="<%= lift.groups.count %>"><%= lift.lift_name %></td>
+              <% end %>
+              <td class="p-2 text-center"><%= group.reps %></td>
+              <td class="p-2 text-center"><%= group.weight %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+  </table>
+</div>
+<%= link_to 'Delete', workout_path(@workout), method: :delete, data: {turbo_method: :delete,
+    turbo_confirm: "Are you sure?" }, class: 'text-red-500 hover:text-red-700' %>
+
