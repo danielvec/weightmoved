@@ -1,34 +1,37 @@
-<h2>Workout Log</h2>
-<table class="items-center">
-  <thead>
-    <tr>
-      <th class="p-2">Date</th>
-      <th class="p-2">Workout Name</th>
-      <th class="p-2">Total</th>
-      <th class="p-2">Lift Name</th>
-      <th class="p-2">Reps</th>
-      <th class="p-2">Sets</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @workouts.each do |workout| %>
-      <% row_color = cycle('bg-gray-100', 'bg-white') %>
-      <tr class="<%= row_color %>">
-          <td class="p-2" rowspan="<%= workout.lifts.map { |lift| lift.groups.count }.sum + 1 %>"><%= workout.date %></td>
-          <td class="p-2" rowspan="<%= workout.lifts.map { |lift| lift.groups.count }.sum + 1 %>"><%= workout.workout_name %></td>
-          <td class="p-2" rowspan="<%= workout.lifts.map { |lift| lift.groups.count }.sum + 1 %>"><%= workout.total %></td>
+<h1 class="text-center text-2xl p-2">Workout Log</h1>
+<div class="flex justify-center">
+  <table class="text-center">
+    <thead>
+      <tr>
+        <th class="p-2 text-center">Date</th>
+        <th class="p-2 text-center">Workout Name</th>
+        <th class="p-2 text-center">Total</th>
+        <th class="p-2 text-center">Lift Name</th>
+        <th class="p-2 text-center">Reps</th>
+        <th class="p-2 text-center">Sets</th>
       </tr>
-      <% workout.lifts.each do |lift| %>
-        <% lift.groups.each_with_index do |group, index| %>
-          <tr class="<%= row_color %>">
-            <% if index == 0 %>
-              <td class="p-2" rowspan="<%= lift.groups.count %>"><%= lift.lift_name %></td>
-            <% end %>
-            <td class="p-2"><%= group.reps %></td>
-            <td class="p-2"><%= group.weight %></td>
-          </tr>
+    </thead>
+    <tbody>
+      <% @workouts.each do |workout| %>
+        <% row_color = cycle('bg-gray-100', 'bg-white') %>
+        <tr class="<%= row_color %>">
+            <td class="p-2 text-center" rowspan="<%= workout.lifts.map { |lift| lift.groups.count }.sum + 1 %>"><%= link_to workout.date, workout_path(workout.id) %>
+            </td>
+            <td class="p-2 text-center" rowspan="<%= workout.lifts.map { |lift| lift.groups.count }.sum + 1 %>"><%= workout.workout_name %></td>
+            <td class="p-2 text-center" rowspan="<%= workout.lifts.map { |lift| lift.groups.count }.sum + 1 %>"><%= workout.total %></td>
+        </tr>
+        <% workout.lifts.each do |lift| %>
+          <% lift.groups.each_with_index do |group, index| %>
+            <tr class="<%= row_color %>">
+              <% if index == 0 %>
+                <td class="p-2 text-center" rowspan="<%= lift.groups.count %>"><%= lift.lift_name %></td>
+              <% end %>
+              <td class="p-2 text-center"><%= group.reps %></td>
+              <td class="p-2 text-center"><%= group.weight %></td>
+            </tr>
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
