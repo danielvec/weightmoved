@@ -1,14 +1,14 @@
 <div class="flex justify-center">
-  <div class="m-12 border rounded-lg shadow-md w-3/5 p-7">
+  <div class="m-12 border rounded-lg shadow-md w-4/5 sm:w-4/5 md:w-3/5 lg:w-1/2 xl:w-2/5 p-7">
     <%= form_with model: @workout do |form| %>
-      <div class="flex rounded">
-        <div class="w-2/5 rounded">
+      <div class="flex justify-between flex-col sm:flex-row rounded">
+        <div class="w-full sm:mr-1">
           <%= form.label :date %><br>
-          <%= form.date_field :date, required: true, class: "rounded-md" %>
+          <%= form.date_field :date, required: true, class: "rounded-md w-full" %>
         </div>
-        <div class="w-3/5"
+        <div class="w-full sm:ml-1"
           <%= form.label :workout_name, 'Workout name (optional):' %><br>
-          <%= form.text_field :workout_name, class: "rounded-md" %><br>
+          <%= form.text_field :workout_name, class: "rounded-md w-full" %><br>
         </div>
       </div>
 
@@ -26,16 +26,16 @@
 
         <%= form.label :total, 'Total Weight Moved:' %><br>
         <%= form.text_field :total, data: {
-            calculator_target: "totalWeight" }, class: "rounded-md" %>
+            calculator_target: "totalWeight" }, class: "rounded-md w-full" %>
       </div>
       <% if user_signed_in? %>
         <%= form.submit "Save Workout", :class => "button" %><br>
       <% end %>
     <% end %>
     <% if flash[:error].present? %>
-  <div class="alert alert-danger">
-    <%= flash[:error] %>
-  </div>
-<% end %>
+      <div class="alert alert-danger">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
   </div>
 </div>
