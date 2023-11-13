@@ -1,15 +1,22 @@
 <div class="nested-fields">
   <%= form.hidden_field :_destroy %>
-
-  <%= form.label :weight, 'Weight:' %>
-  <%= form.number_field :weight, required: true, type: "number", data: {
-      calculator_target: "weight",
-      action: "input->calculator#calculateTotalWeight"}, class: "w-1/4 bg-slate-100 hover:bg-slate-200 border-0 border-b rounded-md" %>
-
-  <%= form.label :reps, '# of reps:' %>
-  <%= form.number_field :reps, required: true, type: "number", data: {
-      calculator_target: "reps",
-      action: "input->calculator#calculateTotalWeight"}, class: "w-1/4 m-1 bg-slate-100 hover:bg-slate-200 border-0 border-b rounded-md" %>
-
-  <%= link_to "Remove", "#", data: { action: "nested-form#removeField" }, class: "text-red-500" %>
+    <div class="flex justify-between">
+      <div>
+        <%= form.label :weight, 'Weight', class: "text-sm font-medium" %>
+        <%= form.number_field :weight, required: true, type: "number", data: {
+            calculator_target: "weight",
+            action: "input->calculator#calculateTotalWeight"}, class: "w-4/5 bg-slate-100 hover:bg-slate-200 border-0 border-b rounded-md" %>
+      </div>
+      <div>
+        <%= form.label :reps, '# of Reps', class: "text-sm font-medium" %>
+        <%= form.number_field :reps, required: true, type: "number", data: {
+            calculator_target: "reps",
+            action: "input->calculator#calculateTotalWeight"}, class: "w-4/5 bg-slate-100 hover:bg-slate-200 border-0 border-b rounded-md" %>
+      </div>
+      <div class="flex items-center">
+        <%= link_to "#", data: { action: "nested-form#removeField" } do %>
+          <%= image_tag("/assets/minus.svg", alt: "Remove", class: "text-red-500 h-5 w-5 mt-4 mr-14") %>
+        <% end %>
+      </div>
+    </div>
 </div>

@@ -3,11 +3,11 @@
     <%= form_with model: @workout do |form| %>
       <div class="flex justify-between flex-col sm:flex-row rounded">
         <div class="w-full sm:mr-1">
-          <%= form.label :date %><br>
+          <%= form.label :date, class: "text-sm font-medium" %>
           <%= form.date_field :date, required: true, class: "rounded-md w-full" %>
         </div>
-        <div class="w-full sm:ml-1"
-          <%= form.label :workout_name, 'Workout name (optional):' %><br>
+        <div class="w-full sm:ml-1">
+          <%= form.label :workout_name, 'Workout Name (optional)', class: "text-sm font-medium" %>
           <%= form.text_field :workout_name, class: "rounded-md w-full" %><br>
         </div>
       </div>
@@ -24,12 +24,12 @@
           </div>
         </div>
 
-        <%= form.label :total, 'Total Weight Moved:' %><br>
+        <%= form.label :total, 'Total Weight Moved', class: "text-sm font-medium" %><br>
         <%= form.text_field :total, data: {
             calculator_target: "totalWeight" }, class: "rounded-md w-full" %>
       </div>
       <% if user_signed_in? %>
-        <%= form.submit "Save Workout", :class => "button" %><br>
+        <%= form.submit "Save Workout", class: "border rounded-md p-1 mt-1 bg-slate-100" %><br>
       <% end %>
     <% end %>
     <% if flash[:error].present? %>
