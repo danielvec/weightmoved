@@ -2,8 +2,8 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   static targets = ["addLift", "addGroup", "liftTemplate", "groupTemplate"];
-  liftIndex = 0;
-  groupIndex = 0;
+  liftIndex = 1;
+  groupIndex = 1;
 
   addLift(event) {
     event.preventDefault();

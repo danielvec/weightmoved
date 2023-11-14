@@ -3,6 +3,9 @@
   <%= form.label :lift_name, 'Lift name', class: "text-sm font-medium" %><br>
   <%= form.text_field :lift_name, required: true, class: "rounded-md w-4/5" %><br>
   <div data-controller="nested-form">
+    <%= form.fields_for :groups, Group.new, child_index: 0 do |group| %>
+      <%= render 'group_fields', form: group %>
+    <% end %>
     <template data-nested-form-target="groupTemplate">
       <%= form.fields_for :groups, Group.new, child_index: 'TEMPLATE_GROUP' do |group| %>
         <%= render 'group_fields', form: group %>
