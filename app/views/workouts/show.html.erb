@@ -12,7 +12,7 @@
     <tbody>
         <% row_color = cycle('bg-gray-100', 'bg-white') %>
         <tr class="<%= row_color %>">
-            <td class="p-2 text-center" rowspan="<%= @workout.lifts.map { |lift| lift.groups.count }.sum + 1 %>"><%= @workout.total %></td>
+            <td class="p-2 text-center" rowspan="<%= @workout.lifts.map { |lift| lift.groups.count }.sum + 1 %>"><%= @workout.total.round %></td>
         </tr>
         <% @workout.lifts.each do |lift| %>
           <% lift.groups.each_with_index do |group, index| %>
