@@ -29,7 +29,7 @@
 
         <%= form.label :total, 'Total Weight Moved', class: "text-sm font-medium" %><br>
         <%= form.text_field :total, data: {
-            calculator_target: "totalWeight" }, class: "rounded-md w-full" %>
+            calculator_target: "totalWeight" }, class: "rounded-md w-1/2" %>
       </div>
       <% if user_signed_in? %>
         <%= form.submit "Save Workout", class: "border rounded-md p-1 mt-1 bg-slate-100" %><br>
