@@ -19,15 +19,16 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <div class="p-3 flex justify-between bg-blue-200">
-      <h1 class="font-playfair-display text-3xl"><%= link_to "weightmoved", root_path %></h1>
-      <div class="flex items-center">
+      <h1 class="font-playfair-display text-xl sm:text-3xl"><%= link_to "weightmoved", root_path %></h1>
+      <div class="flex items-center justify-between">
         <% if user_signed_in? %>
+          <%= link_to "Workouts", workouts_path, class: "mr-6" %>
           <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete } %>
         <% else %>
           <%= link_to "Sign In", new_user_session_path %>
         <% end %>
       </div>
-    </div>  
-      <%= yield %>
+    </div>
+    <%= yield %>
   </body>
 </html>
