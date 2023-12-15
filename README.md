@@ -1,24 +1,15 @@
-# README
+# Weight Moved
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Training Volume, or weight moved, is a popular metric used to track weight lifting performance. As can be inferred from the name, weight moved is weight lifted times sets time reps. This application serves to instantly calculate the total weight moved in a workout. Users can input their workout information and the total weight moved is output in real time. Users can also create an account to save and track their workouts. 
 
-Things you may want to cover:
+[Click here to visit weightmoved.com](https://weightmoved.com/)
 
-* Ruby version
+<img src="weightmoved.png" alt="weightmoved homepage" width=auto height="400px"/><br>
 
-* System dependencies
+## Features
 
-* Configuration
+- Allows users to add as many lifts and sets as needed with a simple click of a button.  
 
-* Database creation
+- Instantly calculates the total volume of your workout without the need for additional clicks.  
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Save and store your workouts in a dedicated workout log for future reference.  
